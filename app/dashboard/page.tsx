@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { auth } from "../../firebase/config";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
-import { BrainCircuit, LogOut, PlayCircle, Star, Users, ChevronRight } from "lucide-react";
+import { BrainCircuit, LogOut, PlayCircle, Star, Users, ChevronRight, Download } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Dashboard() {
@@ -49,7 +49,18 @@ export default function Dashboard() {
       </nav>
 
       <main className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">Your Workspace</h1>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+          <h1 className="text-4xl font-bold">Your Workspace</h1>
+          <a 
+            href="https://drive.google.com/uc?export=download&id=1GHUfkDxLWrXGfwDEnK-f17gu_yKoyJQ-" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 bg-brand-green text-brand-black px-6 py-3 rounded-full font-bold text-sm hover:scale-105 transition-all neon-glow-green"
+          >
+            <Download className="w-4 h-4" />
+            Download App
+          </a>
+        </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
