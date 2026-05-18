@@ -163,6 +163,7 @@ export default function Dashboard() {
               { title: "Group Discussion", desc: "Join AI-powered GD rooms to debate topics and receive performance reviews.", icon: MessageSquare, color: "text-pink-400", path: "/app" },
               { title: "Career Roadmap", desc: "Receive a personalized vertical career roadmap for your target job.", icon: Map, color: "text-emerald-400", path: "/app" },
               { title: "Quiz Generator", desc: "Test your knowledge dynamically on any topic to ensure you're fully prepared before the big day.", icon: ChevronRight, color: "text-orange-400", path: "/app" },
+              { title: "🔮 Premium Career Hub", desc: "Calculate your technical skill gaps, simulate base salaries, and customize negotiation scripts with AI.", icon: Sparkles, color: "text-brand-green", path: "/app" },
             ].map((feature, i) => (
               <motion.div 
                 key={i} 

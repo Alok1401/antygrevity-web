@@ -227,6 +227,7 @@ export default function Home() {
               { title: "Pro Resume Builder", desc: "Craft stunning A4 resumes with AI auto-generated professional content for your specific subject.", icon: Star, color: "text-yellow-400" },
               { title: "Mock Interview Studio", desc: "Practice in real-time with our live camera-enabled recruiter. Get posture, gaze, and WPM scores.", icon: Users, color: "text-purple-400" },
               { title: "Quiz Generator", desc: "Test your knowledge dynamically on any topic to ensure you're fully prepared before the big day.", icon: ChevronRight, color: "text-orange-400" },
+              { title: "Premium Career Mentor", desc: "Calculate your technical skill gaps, simulate base salaries, and reveal personalized negotiation scripts.", icon: Sparkles, color: "text-brand-green" },
             ].map((feature, i) => (
               <div key={i} className="glass-card p-8 rounded-3xl hover:-translate-y-2 transition-transform duration-300 group border border-white/5 hover:border-white/20">
                 <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-white/10 transition-colors">
@@ -301,6 +302,9 @@ export default function Home() {
                   <span className="w-2 h-2 rounded-full bg-brand-green" /> <strong>Interactive Elena AI Voice Avatar</strong>
                 </li>
                 <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-brand-green" /> <strong>Premium AI Career Mentor Hub</strong> (Skill Gaps & Salaries)
+                </li>
+                <li className="flex items-center gap-3">
                   <span className="w-2 h-2 rounded-full bg-brand-green" /> <strong>Unlimited</strong> Resume ATS matching & optimization
                 </li>
                 <li className="flex items-center gap-3">
@@ -316,7 +320,22 @@ export default function Home() {
             </a>
           </div>
         </div>
+      {/* Google AdSense Web Banner Container */}
+      <section className="relative z-10 max-w-4xl mx-auto px-6 pb-20 pt-10 text-center">
+        <div className="bg-white/5 border border-white/5 p-4 rounded-3xl backdrop-blur-md overflow-hidden max-w-full">
+          <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest font-mono mb-3">Sponsored Content</div>
+          <ins className="adsbygoogle"
+               style={{ display: "block" }}
+               data-ad-client="ca-pub-9305168006735352"
+               data-ad-slot="3227362357"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script dangerouslySetInnerHTML={{
+            __html: `(adsbygoogle = window.adsbygoogle || []).push({});`
+          }} />
+        </div>
       </section>
+
       {/* Footer / Branding */}
       <footer className="relative z-10 border-t border-white/10 mt-20">
         <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-4">
