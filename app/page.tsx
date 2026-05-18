@@ -27,9 +27,9 @@ export default function Home() {
           <a href="#demo" className="hover:text-white transition-colors">Demo</a>
           <a href="#testimonials" className="hover:text-white transition-colors">Reviews</a>
         </div>
-        <Link href="/login" className="px-5 py-2.5 text-sm font-semibold text-white bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md transition-all border border-white/10">
-          Sign In
-        </Link>
+        <a href="/app" className="px-5 py-2.5 text-sm font-semibold text-white bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md transition-all border border-white/10">
+          Sign In / Web App
+        </a>
       </nav>
 
       {/* Hero Section */}
@@ -76,19 +76,22 @@ export default function Home() {
             className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
           >
             <a 
-              href="https://drive.google.com/uc?export=download&id=1Ozgu5oyVSW1l_VBx51ZRgrHPAbeyO1no" 
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/app"
               className="group relative w-full sm:w-auto flex items-center justify-center gap-2 bg-brand-green text-brand-black px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-all neon-glow-green overflow-hidden"
             >
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
-              <Download className="w-5 h-5 relative z-10" />
-              <span className="relative z-10">Download APK</span>
+              <BrainCircuit className="w-5 h-5 relative z-10" />
+              <span className="relative z-10">Use Web App (Free)</span>
             </a>
-            <button className="group w-full sm:w-auto flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all backdrop-blur-md">
-              <PlayCircle className="w-5 h-5 group-hover:text-brand-blue transition-colors" />
-              Watch Demo
-            </button>
+            <a 
+              href="https://drive.google.com/uc?export=download&id=1Ozgu5oyVSW1l_VBx51ZRgrHPAbeyO1no" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group w-full sm:w-auto flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all backdrop-blur-md"
+            >
+              <Download className="w-5 h-5 group-hover:text-brand-green transition-colors" />
+              Download APK
+            </a>
           </motion.div>
 
           {/* Stats */}
