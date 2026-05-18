@@ -76,7 +76,7 @@ export default function Home() {
             className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
           >
             <a 
-              href="https://drive.google.com/uc?export=download&id=1GHUfkDxLWrXGfwDEnK-f17gu_yKoyJQ-" 
+              href="https://drive.google.com/uc?export=download&id=1Ozgu5oyVSW1l_VBx51ZRgrHPAbeyO1no" 
               target="_blank"
               rel="noopener noreferrer"
               className="group relative w-full sm:w-auto flex items-center justify-center gap-2 bg-brand-green text-brand-black px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-all neon-glow-green overflow-hidden"
