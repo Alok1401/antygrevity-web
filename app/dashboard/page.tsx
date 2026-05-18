@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { auth } from "../../firebase/config";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
-import { BrainCircuit, LogOut, PlayCircle, Star, Users, ChevronRight, Download } from "lucide-react";
+import { BrainCircuit, LogOut, PlayCircle, Star, Users, ChevronRight, Download, Code2, Map, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Dashboard() {
@@ -68,6 +68,9 @@ export default function Dashboard() {
               { title: "Interview Prep", desc: "Tailored preparation for Core Technical, System Design, HR & Behavioral, and Project Management roles.", icon: PlayCircle, color: "text-brand-green" },
               { title: "Pro Resume Builder", desc: "Craft stunning A4 resumes with AI auto-generated professional content for your specific subject.", icon: Star, color: "text-yellow-400" },
               { title: "Mock Interview", desc: "Practice in real-time with an adaptive AI recruiter. Get instant readiness scores and feedback.", icon: Users, color: "text-purple-400" },
+              { title: "Coding Interviews", desc: "Practice DSA, live coding, and technical rounds with instant AI grading.", icon: Code2, color: "text-red-400" },
+              { title: "Group Discussion", desc: "Join AI-powered GD rooms to debate topics and receive performance reviews.", icon: MessageSquare, color: "text-pink-400" },
+              { title: "Career Roadmap", desc: "Receive a personalized vertical career roadmap for your target job.", icon: Map, color: "text-emerald-400" },
               { title: "Quiz Generator", desc: "Test your knowledge dynamically on any topic to ensure you're fully prepared before the big day.", icon: ChevronRight, color: "text-orange-400" },
             ].map((feature, i) => (
               <motion.div 
@@ -75,6 +78,7 @@ export default function Dashboard() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
+                onClick={() => router.push("/app")}
                 className="glass-card p-8 rounded-3xl hover:-translate-y-2 transition-transform duration-300 group border border-white/5 cursor-pointer relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
