@@ -64,27 +64,27 @@ export default function Dashboard() {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: "AI Tutor", desc: "Ask anything, anytime. A 24/7 intelligent companion for all your doubts and career questions.", icon: BrainCircuit, color: "text-brand-blue" },
-              { title: "Interview Prep", desc: "Tailored preparation for Core Technical, System Design, HR & Behavioral, and Project Management roles.", icon: PlayCircle, color: "text-brand-green" },
-              { title: "Pro Resume Builder", desc: "Craft stunning A4 resumes with AI auto-generated professional content for your specific subject.", icon: Star, color: "text-yellow-400" },
-              { title: "Mock Interview", desc: "Practice in real-time with an adaptive AI recruiter. Get instant readiness scores and feedback.", icon: Users, color: "text-purple-400" },
-              { title: "Coding Interviews", desc: "Practice DSA, live coding, and technical rounds with instant AI grading.", icon: Code2, color: "text-red-400" },
-              { title: "Group Discussion", desc: "Join AI-powered GD rooms to debate topics and receive performance reviews.", icon: MessageSquare, color: "text-pink-400" },
-              { title: "Career Roadmap", desc: "Receive a personalized vertical career roadmap for your target job.", icon: Map, color: "text-emerald-400" },
-              { title: "Quiz Generator", desc: "Test your knowledge dynamically on any topic to ensure you're fully prepared before the big day.", icon: ChevronRight, color: "text-orange-400" },
+              { title: "AI Tutor", desc: "Ask anything, anytime. A 24/7 intelligent companion for all your doubts and career questions.", icon: BrainCircuit, color: "text-brand-blue", path: "/app" },
+              { title: "Interview Prep", desc: "Tailored preparation for Core Technical, System Design, HR & Behavioral, and Project Management roles.", icon: PlayCircle, color: "text-brand-green", path: "/app" },
+              { title: "Pro Resume Builder", desc: "Craft stunning A4 resumes with AI auto-generated professional content for your specific subject.", icon: Star, color: "text-yellow-400", path: "/app" },
+              { title: "Mock Interview", desc: "Practice in real-time with an adaptive AI recruiter. Get instant readiness scores and feedback.", icon: Users, color: "text-purple-400", path: "/dashboard/interview" },
+              { title: "Coding Interviews", desc: "Practice DSA, live coding, and technical rounds with instant AI grading.", icon: Code2, color: "text-red-400", path: "/app" },
+              { title: "Group Discussion", desc: "Join AI-powered GD rooms to debate topics and receive performance reviews.", icon: MessageSquare, color: "text-pink-400", path: "/app" },
+              { title: "Career Roadmap", desc: "Receive a personalized vertical career roadmap for your target job.", icon: Map, color: "text-emerald-400", path: "/app" },
+              { title: "Quiz Generator", desc: "Test your knowledge dynamically on any topic to ensure you're fully prepared before the big day.", icon: ChevronRight, color: "text-orange-400", path: "/app" },
             ].map((feature, i) => (
               <motion.div 
                 key={i} 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                onClick={() => router.push("/app")}
+                onClick={() => router.push(feature.path)}
                 className="glass-card p-8 rounded-3xl hover:-translate-y-2 transition-transform duration-300 group border border-white/5 cursor-pointer relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-white/10 transition-colors relative z-10">
                    <feature.icon className={`w-7 h-7 ${feature.color}`} />
-                </div>
+                 </div>
                 <h3 className="text-xl font-bold mb-3 relative z-10">{feature.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed relative z-10">{feature.desc}</p>
               </motion.div>
