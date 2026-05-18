@@ -76,8 +76,9 @@ export default function Home() {
             className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
           >
             <a 
-              href="/apk/antygrevity-ai.apk" 
-              download="antygrevity_ai.apk"
+              href="https://drive.google.com/uc?export=download&id=1GHUfkDxLWrXGfwDEnK-f17gu_yKoyJQ-" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative w-full sm:w-auto flex items-center justify-center gap-2 bg-brand-green text-brand-black px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-all neon-glow-green overflow-hidden"
             >
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
