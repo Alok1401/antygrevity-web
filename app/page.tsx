@@ -14,8 +14,8 @@ export default function Home() {
 
       {/* Navigation */}
       <nav className="relative z-50 flex items-center justify-between px-6 py-6 max-w-7xl mx-auto">
-        <div className="flex items-center gap-2">
-          <BrainCircuit className="w-8 h-8 text-brand-green" />
+        <div className="flex items-center gap-3">
+          <Image src="/icon.png" alt="AntyGrevity AI Logo" width={36} height={36} className="rounded-xl shadow-lg border border-white/10" />
           <div className="flex flex-col">
             <span className="text-xl font-bold tracking-tight leading-tight">AntyGrevity AI</span>
             <span className="text-[10px] font-medium text-brand-green tracking-widest uppercase">Powered by Alok</span>
@@ -235,8 +235,8 @@ export default function Home() {
       {/* Footer / Branding */}
       <footer className="relative z-10 border-t border-white/10 mt-20">
         <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <BrainCircuit className="w-6 h-6 text-brand-green" />
+          <div className="flex items-center gap-3">
+            <Image src="/icon.png" alt="AntyGrevity AI Logo" width={28} height={28} className="rounded-lg border border-white/5" />
             <span className="font-bold">AntyGrevity AI</span>
           </div>
           <div className="text-sm text-gray-400 font-mono">
