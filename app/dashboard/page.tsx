@@ -186,7 +186,20 @@ export default function Dashboard() {
                 <h3 className="text-xl font-bold mb-3 relative z-10">{feature.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed relative z-10">{feature.desc}</p>
               </motion.div>
-            ))}
+         </div>
+
+         {/* Google AdSense Web Banner Container */}
+         <div className="bg-white/5 border border-white/5 p-4 rounded-3xl backdrop-blur-md overflow-hidden max-w-full text-center mt-12">
+           <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest font-mono mb-3">Sponsored Content</div>
+           <ins className="adsbygoogle"
+                style={{ display: "block" }}
+                data-ad-client="ca-pub-9305168006735352"
+                data-ad-slot="3227362357"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+           <script dangerouslySetInnerHTML={{
+             __html: `(adsbygoogle = window.adsbygoogle || []).push({});`
+           }} />
          </div>
       </main>
     </div>
