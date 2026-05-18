@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { 
   ArrowLeft, Mic, MicOff, Video, VideoOff, Upload, 
   Send, BrainCircuit, Play, CheckCircle2, ShieldCheck, 
-  AlertTriangle, RefreshCw, BarChart2 
+  AlertTriangle, RefreshCw, BarChart2, Sparkles, UserPlus 
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -19,8 +19,159 @@ const QUESTIONS = [
   { q: "Where do you see yourself in the next 5 years in terms of software architecture and technology leadership?", category: "Career Path" }
 ];
 
+// Elena AI Recruiter Custom Interactive SVG Avatar
+function EIAvatar({ isSpeaking, isThinking, speechEnergy }: { isSpeaking: boolean, isThinking: boolean, speechEnergy: number[] }) {
+  const energy = speechEnergy[7] || 10;
+  const mouthScaleY = isSpeaking ? 0.3 + (energy / 50) : 0.1;
+  const mouthScaleX = isSpeaking ? 1.0 + (energy / 100) : 0.8;
+
+  return (
+    <div className="relative w-56 h-56 flex items-center justify-center">
+      {/* Background Hologram Circle Grid */}
+      <div className="absolute inset-0 rounded-full border border-brand-blue/20 bg-brand-blue/5 animate-[spin_30s_linear_infinite]" />
+      
+      {/* Pulse Rings */}
+      <div 
+        className="absolute rounded-full border border-brand-blue/30 transition-all duration-300"
+        style={{
+          width: isSpeaking ? "200px" : "170px",
+          height: isSpeaking ? "200px" : "170px",
+          boxShadow: isSpeaking ? "0 0 30px rgba(0, 209, 255, 0.25)" : "none",
+          opacity: isSpeaking ? 0.8 : 0.3,
+        }}
+      />
+      
+      {/* Inline styles for bobbing and eyelids blinking */}
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes eye-blink {
+          0%, 90%, 100% { transform: scaleY(1); }
+          93%, 97% { transform: scaleY(0.1); }
+        }
+        @keyframes avatar-bob {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-4px); }
+        }
+      `}} />
+
+      {/* Dynamic Avatar SVG */}
+      <svg 
+        viewBox="0 0 200 200" 
+        className="w-48 h-48 relative z-10 drop-shadow-[0_0_20px_rgba(0,209,255,0.45)]"
+      >
+        <defs>
+          <linearGradient id="faceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#1E293B" />
+            <stop offset="100%" stopColor="#0F172A" />
+          </linearGradient>
+          <linearGradient id="hairGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#4F46E5" />
+            <stop offset="50%" stopColor="#06B6D4" />
+            <stop offset="100%" stopColor="#3B82F6" />
+          </linearGradient>
+          <linearGradient id="collarGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#0F172A" />
+            <stop offset="50%" stopColor="#1E1E2F" />
+            <stop offset="100%" stopColor="#0F172A" />
+          </linearGradient>
+        </defs>
+
+        {/* Head Base Bobbing Animation Wrapper */}
+        <g className="origin-center" style={{ animation: "avatar-bob 4s ease-in-out infinite" }}>
+          {/* Neck */}
+          <path d="M85 130 L115 130 L110 160 L90 160 Z" fill="#1E293B" stroke="#00D1FF" strokeWidth="1.5" strokeOpacity="0.5" />
+          
+          {/* Sci-Fi Collar/Shoulders */}
+          <path d="M50 165 C50 145, 70 140, 100 140 C130 140, 150 145, 150 165 L145 190 L55 190 Z" fill="url(#collarGrad)" stroke="#7B61FF" strokeWidth="2" />
+          
+          {/* Cybernetic Neck Lines */}
+          <line x1="95" y1="135" x2="95" y2="155" stroke="#00D1FF" strokeWidth="1.5" strokeOpacity="0.6" />
+          <line x1="105" y1="135" x2="105" y2="155" stroke="#00D1FF" strokeWidth="1.5" strokeOpacity="0.6" />
+
+          {/* Hair Back */}
+          <path d="M50 90 C40 60, 60 25, 100 20 C140 25, 160 60, 150 90 C155 105, 155 125, 150 135 C145 138, 140 120, 140 110 C140 100, 142 80, 142 80 C110 75, 90 75, 58 80 C58 80, 60 100, 60 110 C60 120, 55 138, 50 135 C45 125, 45 105, 50 90 Z" fill="url(#hairGrad)" opacity="0.85" />
+
+          {/* Face Contour */}
+          <path d="M65 80 Q65 130 100 140 Q135 130 135 80 C135 60, 130 45, 100 45 C70 45, 65 60, 65 80 Z" fill="url(#faceGrad)" stroke="#00D1FF" strokeWidth="2" />
+
+          {/* Cybernetic Face Plates/Tattoos */}
+          <path d="M70 70 L78 72 L76 82" fill="none" stroke="#7B61FF" strokeWidth="1.5" strokeOpacity="0.6" />
+          <path d="M130 70 L122 72 L124 82" fill="none" stroke="#7B61FF" strokeWidth="1.5" strokeOpacity="0.6" />
+
+          {/* Eyes (Blinking Animation Built-in) */}
+          <g>
+            {/* Left Eye open ellipse */}
+            <ellipse cx="85" cy="78" rx="8" ry="4" fill="none" stroke="#00D1FF" strokeWidth="1.5" />
+            <circle cx="85" cy="78" r="3" fill="#00D1FF" className="animate-pulse" />
+            
+            {/* Left Eyelid blink overlay */}
+            <g className="origin-[85px_78px]" style={{ animation: "eye-blink 5s ease-in-out infinite" }}>
+              <path d="M75 74 Q85 82 95 74" fill="none" stroke="#00D1FF" strokeWidth="2" />
+            </g>
+
+            {/* Right Eye open ellipse */}
+            <ellipse cx="115" cy="78" rx="8" ry="4" fill="none" stroke="#00D1FF" strokeWidth="1.5" />
+            <circle cx="115" cy="78" r="3" fill="#00D1FF" className="animate-pulse" />
+            
+            {/* Right Eyelid blink overlay */}
+            <g className="origin-[115px_78px]" style={{ animation: "eye-blink 5s ease-in-out infinite" }}>
+              <path d="M105 74 Q115 82 125 74" fill="none" stroke="#00D1FF" strokeWidth="2" />
+            </g>
+          </g>
+
+          {/* Eyebrows */}
+          <path d="M74 68 Q84 65 91 71" fill="none" stroke="#06B6D4" strokeWidth="1.5" strokeLinecap="round" />
+          <path d="M126 68 Q116 65 109 71" fill="none" stroke="#06B6D4" strokeWidth="1.5" strokeLinecap="round" />
+
+          {/* Nose */}
+          <path d="M100 80 L98 94 L102 94 Z" fill="none" stroke="#00D1FF" strokeWidth="1" strokeOpacity="0.4" />
+
+          {/* Lip-Sync Animated Mouth */}
+          <g>
+            {isSpeaking ? (
+              // Active Lip-sync morphing voice-ring or shape
+              <ellipse 
+                cx="100" 
+                cy="110" 
+                rx={10 * mouthScaleX} 
+                ry={12 * mouthScaleY} 
+                fill="none" 
+                stroke="#00D1FF" 
+                strokeWidth="2.5" 
+                className="transition-all duration-100"
+              />
+            ) : (
+              // Idle/Listening Smile
+              <path 
+                d="M92 108 Q100 114 108 108" 
+                fill="none" 
+                stroke="#00D1FF" 
+                strokeWidth="2.5" 
+                strokeLinecap="round" 
+                className="transition-all duration-300"
+              />
+            )}
+          </g>
+          
+          {/* Holographic Cheek Glare */}
+          <ellipse cx="78" cy="95" rx="5" ry="3" fill="#00D1FF" opacity="0.15" />
+          <ellipse cx="122" cy="95" rx="5" ry="3" fill="#00D1FF" opacity="0.15" />
+
+          {/* Hair Front Bangs */}
+          <path d="M65 55 Q85 45 100 58 Q115 45 135 55 C132 50, 125 45, 100 45 C75 45, 68 50, 65 55 Z" fill="url(#hairGrad)" />
+        </g>
+      </svg>
+      
+      {/* Dynamic spinner ring when AI is calculating/thinking */}
+      {isThinking && (
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border border-dashed border-brand-blue/40 rounded-full animate-[spin_10s_linear_infinite]" />
+      )}
+    </div>
+  );
+}
+
 export default function InterviewStudio() {
   const [user, setUser] = useState<any>(null);
+  const [isGuest, setIsGuest] = useState(false);
   const router = useRouter();
   
   // Hardware and Status State
@@ -46,8 +197,15 @@ export default function InterviewStudio() {
   
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  // Authentication check
+  // Authentication check with Guest Mode support
   useEffect(() => {
+    const guest = localStorage.getItem("guestMode") === "true";
+    if (guest) {
+      setIsGuest(true);
+      setUser({ displayName: "Guest Adventurer", email: "guest@antygrevity.com" });
+      return;
+    }
+
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
@@ -57,6 +215,8 @@ export default function InterviewStudio() {
     });
     return () => unsubscribe();
   }, [router]);
+
+  const activeQuestions = isGuest ? QUESTIONS.slice(0, 2) : QUESTIONS;
 
   // Handle HTML5 Live Camera Pipeline
   useEffect(() => {
@@ -138,18 +298,21 @@ export default function InterviewStudio() {
   };
 
   const nextQuestion = () => {
-    if (currentIndex < QUESTIONS.length - 1) {
+    if (currentIndex < activeQuestions.length - 1) {
       setCurrentIndex(prev => prev + 1);
       setUserAnswer("");
       setShowFeedback(false);
       setIsAiSpeaking(true);
       setIsAiThinking(false);
     } else {
+      if (isGuest) {
+        localStorage.setItem("guest_interviews_used", "2");
+      }
       setFinished(true);
     }
   };
 
-  if (!user) return <div className="min-h-screen bg-[#0B1020] flex items-center justify-center text-white">Loading Workspace...</div>;
+  if (!user) return <div className="min-h-screen bg-[#0B1020] flex items-center justify-center text-white font-mono">INITIALIZING CONSOLE...</div>;
 
   return (
     <div className="min-h-screen bg-[#0B1020] text-white p-6 relative overflow-hidden flex flex-col justify-between">
@@ -169,7 +332,7 @@ export default function InterviewStudio() {
         <div className="flex items-center gap-3 bg-black/40 px-5 py-2.5 rounded-full border border-brand-green/20">
           <div className="w-2.5 h-2.5 bg-brand-green rounded-full animate-pulse" />
           <span className="text-[11px] font-mono tracking-widest text-brand-green uppercase font-bold">
-            ANTYGREVITY AI HOST ACTIVE
+            {isGuest ? "GUEST MOCK INTERVIEW ACTIVE" : "ANTYGREVITY AI HOST ACTIVE"}
           </span>
         </div>
       </header>
@@ -193,31 +356,17 @@ export default function InterviewStudio() {
           <div className="flex items-center justify-between w-full">
             <span className="bg-red-500/20 text-red-400 border border-red-500/30 text-[10px] font-bold px-3 py-1 rounded-md tracking-wider flex items-center gap-1.5 animate-pulse">
               <span className="w-1.5 h-1.5 bg-red-400 rounded-full" />
-              LIVE STREAM
+              LIVE REC EVAL
             </span>
-            <span className="text-gray-400 text-xs font-mono">Telemetry Active</span>
+            <span className="text-gray-400 text-xs font-mono">Elena AI Voice Simulation</span>
           </div>
 
           {/* Recruiter Stylized Hologram Center */}
           <div className="flex flex-col items-center justify-center py-8">
-            <div className="relative flex items-center justify-center">
-              {/* Pulsating outer neon border modulated by speech energy */}
-              <div 
-                className="absolute rounded-full border-2 border-brand-blue/30 transition-all duration-150"
-                style={{
-                  width: `${140 + (speechEnergy[7] || 5)}px`,
-                  height: `${140 + (speechEnergy[7] || 5)}px`,
-                  boxShadow: isAiSpeaking ? "0 0 20px rgba(0, 209, 255, 0.2)" : "none"
-                }}
-              />
-              {/* Inner stylized AI Avatar core */}
-              <div className="w-28 h-28 rounded-full bg-gradient-to-tr from-brand-blue to-purple-500 flex items-center justify-center shadow-lg shadow-brand-blue/35 relative z-10">
-                <BrainCircuit className="w-14 h-14 text-white animate-pulse" />
-              </div>
-            </div>
+            <EIAvatar isSpeaking={isAiSpeaking} isThinking={isAiThinking} speechEnergy={speechEnergy} />
             
             <h3 className="text-lg font-bold mt-6 tracking-wide">
-              {isAiThinking ? "Analyzing response Poise..." : "AntyGrevity AI Recruiter"}
+              {isAiThinking ? "Analyzing response Poise..." : "Elena - AI Recruiter Avatar"}
             </h3>
             <p className="text-[10px] font-mono tracking-widest text-brand-blue uppercase mt-1 font-bold">
               {isAiSpeaking ? "• Speaking Live Evaluation" : "• Listening Feed..."}
@@ -247,7 +396,7 @@ export default function InterviewStudio() {
           {/* Section Tracker */}
           <div className="flex items-center justify-between mb-4">
             <span className="bg-brand-blue/15 text-brand-blue border border-brand-blue/20 text-[10px] font-mono font-bold px-3 py-1 rounded-lg">
-              {QUESTIONS[currentIndex].category}
+              {activeQuestions[currentIndex].category}
             </span>
             <span className="text-[10px] text-brand-green bg-brand-green/10 border border-brand-green/20 px-2 py-0.5 rounded font-mono font-bold">
               CLARITY: HIGH
@@ -256,9 +405,9 @@ export default function InterviewStudio() {
 
           {/* Active Question Panel */}
           <div className="flex-grow flex flex-col justify-start">
-            <span className="text-gray-400 text-xs font-mono mb-2">QUESTION {currentIndex + 1} OF {QUESTIONS.length}</span>
+            <span className="text-gray-400 text-xs font-mono mb-2">QUESTION {currentIndex + 1} OF {activeQuestions.length}</span>
             <h2 className="text-xl font-bold leading-relaxed mb-6">
-              {QUESTIONS[currentIndex].q}
+              {activeQuestions[currentIndex].q}
             </h2>
 
             {/* Answer Feed Screen */}
@@ -306,7 +455,7 @@ export default function InterviewStudio() {
                         onClick={nextQuestion}
                         className="w-full bg-brand-green text-brand-black hover:bg-brand-green/90 font-bold py-3 rounded-xl transition-all text-xs tracking-wider uppercase mt-2 font-mono"
                       >
-                        {currentIndex === QUESTIONS.length - 1 ? "FINISH STUDIO SESSION" : "PROCEED TO NEXT CHALLENGE"}
+                        {currentIndex === activeQuestions.length - 1 ? "FINISH STUDIO SESSION" : "PROCEED TO NEXT CHALLENGE"}
                       </button>
                     </div>
                   )}
@@ -383,7 +532,12 @@ export default function InterviewStudio() {
 
         {/* End Call Button */}
         <button 
-          onClick={() => setFinished(true)}
+          onClick={() => {
+            if (isGuest) {
+              localStorage.setItem("guest_interviews_used", "2");
+            }
+            setFinished(true);
+          }}
           className="p-3 rounded-full bg-red-600 hover:bg-red-500 text-white transition-all shadow-[0_0_12px_rgba(239,68,68,0.5)]"
         >
           <Play className="w-5 h-5 rotate-90" />
@@ -392,7 +546,7 @@ export default function InterviewStudio() {
 
       {/* Post-Session Performance Analytics Modal */}
       {finished && (
-        <div className="fixed inset-0 z-50 bg-[#0B1020]/90 backdrop-blur-md flex items-center justify-center p-6">
+        <div className="fixed inset-0 z-50 bg-[#0B1020]/95 backdrop-blur-md flex items-center justify-center p-6">
           <motion.div 
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -401,50 +555,113 @@ export default function InterviewStudio() {
             {/* Background circular element */}
             <div className="absolute -top-12 -left-12 w-28 h-28 bg-brand-green/10 rounded-full blur-2xl pointer-events-none" />
 
-            <div className="text-center space-y-3">
-              <div className="w-24 h-24 rounded-full border-4 border-brand-green/40 mx-auto flex items-center justify-center bg-brand-green/5 shadow-[0_0_16px_rgba(0,230,118,0.2)]">
-                <span className="text-3xl font-black text-white font-mono">
-                  {Math.round((score / QUESTIONS.length) * 100)}%
-                </span>
-              </div>
-              <h2 className="text-2xl font-bold tracking-tight mt-4">Session Complete!</h2>
-              <p className="text-gray-400 text-sm">
-                Corporate placement readiness evaluation critique compiled successfully.
-              </p>
-            </div>
+            {isGuest ? (
+              // GUEST SIGNUP DYNAMIC WORKSPACE PROMPT
+              <>
+                <div className="text-center space-y-3">
+                  <div className="w-16 h-16 rounded-2xl bg-brand-green/10 border border-brand-green/30 mx-auto flex items-center justify-center">
+                    <Sparkles className="w-8 h-8 text-brand-green animate-pulse" />
+                  </div>
+                  <h2 className="text-2xl font-black tracking-tight mt-4">Guest Demo Completed!</h2>
+                  <p className="text-gray-300 text-sm">
+                    You completed the guest mock interview setup. Your preliminary scorecard has been generated!
+                  </p>
+                </div>
 
-            <div className="bg-white/5 p-5 rounded-2xl space-y-4 border border-white/5">
-              <div className="flex justify-between items-center text-sm">
-                <span className="text-gray-400">Total Statements:</span>
-                <span className="font-bold font-mono">{QUESTIONS.length}</span>
-              </div>
-              <div className="flex justify-between items-center text-sm">
-                <span className="text-gray-400">Good Stance Submissions:</span>
-                <span className="font-bold text-brand-green font-mono">{score}</span>
-              </div>
-              <div className="flex justify-between items-center text-sm">
-                <span className="text-gray-400">Poise & Gaze Consistency:</span>
-                <span className="font-bold text-brand-blue font-mono">High (94%)</span>
-              </div>
-              <div className="flex justify-between items-center text-sm">
-                <span className="text-gray-400">WPM Speech Energy:</span>
-                <span className="font-bold text-yellow-400 font-mono">Balanced</span>
-              </div>
-            </div>
+                <div className="bg-white/5 p-5 rounded-2xl space-y-4 border border-white/5">
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-gray-400">Mock Scorecard:</span>
+                    <span className="font-bold text-brand-green font-mono">{score} / {activeQuestions.length} Good Answers</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm text-gray-500">
+                    <span>Advanced Gaze/Posture:</span>
+                    <span className="italic">Locked (Premium)</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm text-gray-500">
+                    <span>Vocabulary Grade:</span>
+                    <span className="italic">Locked (Premium)</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm text-gray-500">
+                    <span>ATS CV Alignment:</span>
+                    <span className="italic">Locked (Premium)</span>
+                  </div>
+                </div>
 
-            <div className="flex items-center gap-2 bg-brand-green/15 text-brand-green border border-brand-green/20 p-3 rounded-xl">
-              <ShieldCheck className="w-5 h-5 flex-shrink-0" />
-              <span className="text-xs leading-relaxed font-semibold">
-                You passed corporate baseline standards! Readiness score is high.
-              </span>
-            </div>
+                <div className="flex items-center gap-2 bg-brand-green/15 text-brand-green border border-brand-green/20 p-3.5 rounded-xl">
+                  <UserPlus className="w-5 h-5 flex-shrink-0 text-brand-green animate-bounce" />
+                  <span className="text-xs leading-relaxed font-semibold">
+                    Create a free account to unlock full PDF scorecards, unlimited studio prep, and the Pro Resume Builder!
+                  </span>
+                </div>
 
-            <button 
-              onClick={() => router.push("/dashboard")}
-              className="w-full bg-brand-green text-brand-black hover:scale-[1.02] font-black py-4 rounded-2xl transition-all text-sm tracking-widest uppercase font-mono shadow-lg shadow-brand-green/20"
-            >
-              CLOSE STUDIO
-            </button>
+                <div className="space-y-3">
+                  <button 
+                    onClick={() => {
+                      localStorage.removeItem("guestMode");
+                      router.push("/login");
+                    }}
+                    className="w-full bg-brand-green text-brand-black hover:scale-[1.02] font-black py-4 rounded-2xl transition-all text-sm tracking-wider uppercase font-mono shadow-lg shadow-brand-green/20 flex items-center justify-center gap-2"
+                  >
+                    <Sparkles className="w-4 h-4" />
+                    CREATE FREE ACCOUNT NOW
+                  </button>
+                  <button 
+                    onClick={() => router.push("/dashboard")}
+                    className="w-full bg-transparent text-gray-400 hover:text-white border border-white/10 hover:bg-white/5 font-bold py-3 rounded-2xl transition-all text-xs uppercase"
+                  >
+                    Go back to Dashboard
+                  </button>
+                </div>
+              </>
+            ) : (
+              // STANDARD REGISTERED USER SUMMARY
+              <>
+                <div className="text-center space-y-3">
+                  <div className="w-24 h-24 rounded-full border-4 border-brand-green/40 mx-auto flex items-center justify-center bg-brand-green/5 shadow-[0_0_16px_rgba(0,230,118,0.2)]">
+                    <span className="text-3xl font-black text-white font-mono">
+                      {Math.round((score / activeQuestions.length) * 100)}%
+                    </span>
+                  </div>
+                  <h2 className="text-2xl font-bold tracking-tight mt-4">Session Complete!</h2>
+                  <p className="text-gray-400 text-sm">
+                    Corporate placement readiness evaluation critique compiled successfully.
+                  </p>
+                </div>
+
+                <div className="bg-white/5 p-5 rounded-2xl space-y-4 border border-white/5">
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-gray-400">Total Statements:</span>
+                    <span className="font-bold font-mono">{activeQuestions.length}</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-gray-400">Good Stance Submissions:</span>
+                    <span className="font-bold text-brand-green font-mono">{score}</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-gray-400">Poise & Gaze Consistency:</span>
+                    <span className="font-bold text-brand-blue font-mono">High (94%)</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-gray-400">WPM Speech Energy:</span>
+                    <span className="font-bold text-yellow-400 font-mono">Balanced</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 bg-brand-green/15 text-brand-green border border-brand-green/20 p-3 rounded-xl">
+                  <ShieldCheck className="w-5 h-5 flex-shrink-0" />
+                  <span className="text-xs leading-relaxed font-semibold">
+                    You passed corporate baseline standards! Readiness score is high.
+                  </span>
+                </div>
+
+                <button 
+                  onClick={() => router.push("/dashboard")}
+                  className="w-full bg-brand-green text-brand-black hover:scale-[1.02] font-black py-4 rounded-2xl transition-all text-sm tracking-widest uppercase font-mono shadow-lg shadow-brand-green/20"
+                >
+                  CLOSE STUDIO
+                </button>
+              </>
+            )}
           </motion.div>
         </div>
       )}

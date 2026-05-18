@@ -76,21 +76,28 @@ export default function Home() {
             className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
           >
             <a 
-              href="/app"
-              className="group relative w-full sm:w-auto flex items-center justify-center gap-2 bg-brand-green text-brand-black px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-all neon-glow-green overflow-hidden"
+              href="/dashboard/interview?guest=true"
+              className="group relative w-full sm:w-auto flex items-center justify-center gap-3 bg-brand-green text-brand-black px-8 py-4 rounded-full font-black text-lg hover:scale-105 transition-all neon-glow-green overflow-hidden"
             >
-              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
-              <BrainCircuit className="w-5 h-5 relative z-10" />
-              <span className="relative z-10">Use Web App (Free)</span>
+              <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+              <PlayCircle className="w-6 h-6 relative z-10 animate-pulse text-brand-black" />
+              <span className="relative z-10">Start AI Interview (Guest Demo)</span>
+            </a>
+            <a 
+              href="/login"
+              className="group w-full sm:w-auto flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all backdrop-blur-md"
+            >
+              <BrainCircuit className="w-5 h-5 group-hover:text-brand-green transition-colors" />
+              Use Web App
             </a>
             <a 
               href="https://drive.google.com/uc?export=download&id=1Ozgu5oyVSW1l_VBx51ZRgrHPAbeyO1no" 
               target="_blank"
               rel="noopener noreferrer"
-              className="group w-full sm:w-auto flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all backdrop-blur-md"
+              className="group w-full sm:w-auto flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white px-6 py-4 rounded-full font-semibold text-sm hover:bg-white/10 transition-all backdrop-blur-md"
             >
-              <Download className="w-5 h-5 group-hover:text-brand-green transition-colors" />
-              Download APK
+              <Download className="w-4 h-4 group-hover:text-brand-green transition-colors" />
+              APK
             </a>
           </motion.div>
 
@@ -218,7 +225,7 @@ export default function Home() {
               { title: "AI Tutor", desc: "Ask anything, anytime. A 24/7 intelligent companion for all your doubts and career questions.", icon: BrainCircuit, color: "text-brand-blue" },
               { title: "Interview Prep", desc: "Tailored preparation for Core Technical, System Design, HR & Behavioral, and Project Management roles.", icon: PlayCircle, color: "text-brand-green" },
               { title: "Pro Resume Builder", desc: "Craft stunning A4 resumes with AI auto-generated professional content for your specific subject.", icon: Star, color: "text-yellow-400" },
-              { title: "Mock Interview", desc: "Practice in real-time with an adaptive AI recruiter. Get instant readiness scores and feedback.", icon: Users, color: "text-purple-400" },
+              { title: "Mock Interview Studio", desc: "Practice in real-time with our live camera-enabled recruiter. Get posture, gaze, and WPM scores.", icon: Users, color: "text-purple-400" },
               { title: "Quiz Generator", desc: "Test your knowledge dynamically on any topic to ensure you're fully prepared before the big day.", icon: ChevronRight, color: "text-orange-400" },
             ].map((feature, i) => (
               <div key={i} className="glass-card p-8 rounded-3xl hover:-translate-y-2 transition-transform duration-300 group border border-white/5 hover:border-white/20">
@@ -232,6 +239,84 @@ export default function Home() {
          </div>
       </section>
 
+      {/* Pricing / Subscriptions Section */}
+      <section id="pricing" className="relative z-10 max-w-7xl mx-auto px-6 pb-32">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-extrabold mb-4 tracking-tight">Flexible, Growth-First Pricing</h2>
+          <p className="text-gray-400 text-lg">Use completely free with Guest Mode, or scale with professional career coaching.</p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
+          
+          {/* Free Tier */}
+          <div className="glass-card p-10 rounded-[2.5rem] border border-white/5 flex flex-col justify-between hover:border-white/10 transition-all relative">
+            <div>
+              <div className="text-brand-green font-bold text-xs uppercase tracking-widest mb-2 font-mono">Starter Pack</div>
+              <h3 className="text-3xl font-extrabold mb-3">Free Tier</h3>
+              <p className="text-gray-400 text-sm mb-6">Perfect for students trying out the platform and practicing occasionally.</p>
+              <div className="text-4xl font-extrabold mb-8">$0 <span className="text-gray-500 text-sm font-normal">/ forever</span></div>
+              <ul className="space-y-4 mb-8 text-sm text-gray-300">
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-brand-green" /> 3 AI interviews per day
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-brand-green" /> Basic HR evaluation feedback
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-brand-green" /> 5 AI Tutor questions per day
+                </li>
+                <li className="flex items-center gap-3 text-gray-500">
+                  <span className="w-2 h-2 rounded-full bg-gray-600" /> Advanced Gaze/Postures/WPM analysis
+                </li>
+                <li className="flex items-center gap-3 text-gray-500">
+                  <span className="w-2 h-2 rounded-full bg-gray-600" /> Interactive Voice Avatar speaking
+                </li>
+              </ul>
+            </div>
+            <a 
+              href="/dashboard/interview?guest=true"
+              className="w-full text-center py-4 bg-white/5 border border-white/10 hover:bg-white/10 rounded-2xl font-bold transition-all"
+            >
+              Start Free Guest Demo
+            </a>
+          </div>
+
+          {/* Premium Tier */}
+          <div className="glass-card p-10 rounded-[2.5rem] border-2 border-brand-green flex flex-col justify-between hover:-translate-y-1 transition-all relative overflow-hidden bg-brand-green/5 shadow-2xl shadow-brand-green/10">
+            <div className="absolute top-5 right-5 bg-brand-green text-brand-black text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full font-mono">
+              Most Popular
+            </div>
+            <div>
+              <div className="text-brand-green font-bold text-xs uppercase tracking-widest mb-2 font-mono">AntyGrevity Pro</div>
+              <h3 className="text-3xl font-extrabold mb-3">Premium Plan</h3>
+              <p className="text-gray-300 text-sm mb-6">For aggressive job hunters and top-tier engineering positions.</p>
+              <div className="text-4xl font-extrabold mb-8">$19 <span className="text-gray-400 text-sm font-normal">/ month</span></div>
+              <ul className="space-y-4 mb-8 text-sm text-gray-200">
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-brand-green" /> <strong>Unlimited</strong> AI Mock Interviews
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-brand-green" /> Advanced Gaze, Postures & Vocabulary analysis
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-brand-green" /> <strong>Interactive Elena AI Voice Avatar</strong>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-brand-green" /> <strong>Unlimited</strong> Resume ATS matching & optimization
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-brand-green" /> Priority edge compute for instant evaluations
+                </li>
+              </ul>
+            </div>
+            <a 
+              href="/login"
+              className="w-full text-center py-4 bg-brand-green text-brand-black hover:scale-105 rounded-2xl font-black transition-all neon-glow-green"
+            >
+              Upgrade / Sign Up Now
+            </a>
+          </div>
+        </div>
+      </section>
       {/* Footer / Branding */}
       <footer className="relative z-10 border-t border-white/10 mt-20">
         <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-4">
