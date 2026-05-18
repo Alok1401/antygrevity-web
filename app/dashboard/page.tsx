@@ -52,9 +52,8 @@ export default function Dashboard() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <h1 className="text-4xl font-bold">Your Workspace</h1>
           <a 
-            href="https://drive.google.com/uc?export=download&id=1GHUfkDxLWrXGfwDEnK-f17gu_yKoyJQ-" 
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/apk/antygrevity-ai.apk" 
+            download="antygrevity_ai.apk"
             className="inline-flex items-center justify-center gap-2 bg-brand-green text-brand-black px-6 py-3 rounded-full font-bold text-sm hover:scale-105 transition-all neon-glow-green"
           >
             <Download className="w-4 h-4" />
