@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-black: #0A0A0A;
+  --color-brand-dark: #111111;
+  --color-brand-green: #10A37F;
+  --color-brand-blue: #4FC3F7;
+  
+  --color-background: var(--brand-black);
+  --color-foreground: #ffffff;
+  
+  --font-sans: var(--font-inter), sans-serif;
+}
+
+:root {
+  --brand-black: #0A0A0A;
+  --brand-dark: #111111;
+  --brand-green: #10A37F;
+  --brand-blue: #4FC3F7;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--brand-black);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations and Glows */
+.neon-glow-green {
+  box-shadow: 0 0 20px rgba(16, 163, 127, 0.4);
+}
+
+.neon-glow-blue {
+  box-shadow: 0 0 20px rgba(79, 195, 247, 0.4);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, var(--brand-green), var(--brand-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
